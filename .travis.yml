@@ -20,3 +20,15 @@ after_success:
  - docker push phareesh76/multi-nginx
  - docker push phareesh76/multi-server
  - docker push phareesh76/multi-worker
+
+deploy:
+ provider: elasticbeanstalk
+ region: "us-east-2"
+ app: "multi-docker"
+ env: "MultiDocker-env"
+ bucket_name: "elasticbeanstalk-us-east-2-785163521946"
+ bucket_path: "docker_multi"
+ on:
+  branch: master
+ access_key_id: "$AWS_ACCESS_KEY"
+ secret_access_key: "$AWS_SECRET_KEY"
